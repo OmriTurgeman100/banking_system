@@ -8,48 +8,48 @@ export class AccountService {
         this.repo = repo
     }
 
-    async create_new_account(person_id: number) {
+    async createNewAccount(personId: number) {
 
-        const specified_person = await this.repo.findPersonById(person_id)
+        const specifiedPerson = await this.repo.findPersonById(personId)
 
 
-        if (!specified_person) {
+        if (!specifiedPerson) {
             throw new AppError("Person not found", 400)
         }
 
 
-        const user = await this.repo.create_account(person_id)
+        const user = await this.repo.createAccount(personId)
 
         return user
     }
 
-    async find_account_balance(account_id: number) {
-        const specified_account = await this.repo.findAccountById(account_id)
+    async findAccountBalance(accountId: number) {
+        const specifiedAccount = await this.repo.findAccountById(accountId)
 
-        if (!specified_account) {
+        if (!specifiedAccount) {
             throw new AppError("Account not found", 400)
         }
 
 
-        if (specified_account.blockedflag) {
+        if (specifiedAccount.blockedflag) {
             throw new AppError("You are blocked", 401)
         }
 
 
-        const balance = await this.repo.findAccountBalance(account_id)
+        const balance = await this.repo.findAccountBalance(accountId)
 
         return balance
 
     }
 
-    async block_selected_account(account_id: number, state: boolean) {
-        const specified_account = await this.repo.findAccountById(account_id)
+    async blockSelectedAccount(accountId: number, state: boolean) {
+        const specifiedAccount = await this.repo.findAccountById(accountId)
 
-        if (!specified_account) {
+        if (!specifiedAccount) {
             throw new AppError("Account not found", 400)
         }
 
-        const account = await this.repo.block_specified_account(account_id, state)
+        const account = await this.repo.blockSpecifiedAccount(accountId, state)
 
         return account
 

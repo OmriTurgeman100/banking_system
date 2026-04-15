@@ -5,14 +5,14 @@ const router = express.Router();
 
 router
     .route("/create")
-    .post(AccountController.create_account);
+    .post(AccountController.createAccount);
 
 router
     .route("/balance/:account_id")
-    .get(AccountController.display_account_balance);
+    .get(AccountController.displayAccountBalance);
 
 router
     .route("/block/:account_id")
-    .patch(AccountController.block_account);
+    .patch(AccountController.blockAccount);
 
 export default router;

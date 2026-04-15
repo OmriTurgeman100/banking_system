@@ -1,7 +1,6 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import helmet from "helmet";
 import cors from "cors";
-import { Request, Response, NextFunction } from "express";
 import AppError from "./utils/AppError";
 import { GlobalError } from "./utils/GlobalError";
 import accountRouter from "./routers/AccountRouter"

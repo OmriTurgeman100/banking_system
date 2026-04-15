@@ -23,7 +23,7 @@ export class TransactionService {
             throw new AppError("You are blocked", 401)
         }
 
-        const result = await this.repo.deposit_money(accountId, amount)
+        const result = await this.repo.depositMoney(accountId, amount)
 
         return result
 
@@ -40,9 +40,10 @@ export class TransactionService {
             throw new AppError("You are blocked", 401)
         }
 
-        // if (account.balance 0)
+        // * Service is in development, not ready yet. need to perform more checks.
 
-        const result = await this.repo.withdraw_money(accountId, amount)
+
+        const result = await this.repo.withdrawMoney(accountId, amount)
 
         return result
     }

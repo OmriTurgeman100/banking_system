@@ -5,48 +5,48 @@ import { AccountService } from "../services/AccountService";
 
 const accountService = new AccountService(new AccountRepo())
 
-export const create_account = CatchAsync(
+export const createAccount = CatchAsync(
 
     async (req: Request, res: Response): Promise<void> => {
 
-        const person_id = Number(req.body.person_id)
+        const personId = Number(req.body.person_id)
 
-        if (isNaN(person_id)) {
+        if (isNaN(personId)) {
             res.status(400).json({ message: "Invalid person_id" });
             return;
         }
 
-        res.status(200).json({ data: await accountService.create_new_account(person_id) });
+        res.status(200).json({ data: await accountService.createNewAccount(personId) });
 
     },
 );
 
 
-export const display_account_balance = CatchAsync(
+export const displayAccountBalance = CatchAsync(
 
     async (req: Request, res: Response): Promise<void> => {
 
-        const account_id = Number(req.params.account_id)
+        const accountId = Number(req.params.account_id)
 
-        if (isNaN(account_id)) {
+        if (isNaN(accountId)) {
             res.status(400).json({ message: "Invalid account_id" });
             return;
         }
 
-        res.status(200).json({ data: await accountService.find_account_balance(account_id) });
+        res.status(200).json({ data: await accountService.findAccountBalance(accountId) });
 
     },
 );
 
-export const block_account = CatchAsync(
+export const blockAccount = CatchAsync(
 
     async (req: Request, res: Response): Promise<void> => {
 
-        const account_id = Number(req.params.account_id)
+        const accountId = Number(req.params.account_id)
 
         const block = req.body.block;
 
-        if (isNaN(account_id)) {
+        if (isNaN(accountId)) {
             res.status(400).json({ message: "Invalid account_id" });
             return;
         }
@@ -61,7 +61,7 @@ export const block_account = CatchAsync(
         }
 
 
-        res.status(200).json({ data: await accountService.block_selected_account(account_id, block) });
+        res.status(200).json({ data: await accountService.blockSelectedAccount(accountId, block) });
 
     },
 );

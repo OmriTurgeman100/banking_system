@@ -23,7 +23,7 @@ create table accounts (
     personId BIGINT not null unique references persons(personId), 
     balance NUMERIC(15, 2) not null default 0.00 check (balance >= 0), 
     dailyWithdrawalLimit NUMERIC(15,2) NOT NULL DEFAULT 200.00 check (dailyWithdrawalLimit >= 0),
-    blockedFlag boolean not null default false, 
+    blockedflag boolean not null default false, 
     accountType text not null CHECK (accountType IN ('CHECKING', 'SAVINGS', 'BUSINESS', 'STUDENT')) default 'CHECKING',
     createDate Date not null default CURRENT_DATE 
 );

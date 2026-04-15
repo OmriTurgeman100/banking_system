@@ -1,7 +1,10 @@
+import { IAccount } from "./Account"
+
+
 export interface ITransactionRepository {
 
-    deposit_money(accountId: number, balance: number): Promise<string>
+    depositMoney(accountId: number, balance: number): Promise<IAccount>
 
-    withdraw_money(accountId: number, balance: number): Promise<any>
+    withdrawMoney(accountId: number, balance: number): Promise<IAccount>
 
 }
