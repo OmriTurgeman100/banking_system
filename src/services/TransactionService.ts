@@ -28,4 +28,22 @@ export class TransactionService {
         return result
 
     }
+
+    async withdraw(accountId: number, amount: number,) {
+        const account = await this.external_account_repo.findAccountById(accountId)
+
+        if (!account) {
+            throw new AppError("Account not found", 400)
+        }
+
+        if (account.blockedflag) {
+            throw new AppError("You are blocked", 401)
+        }
+
+        // if (account.balance 0)
+
+        const result = await this.repo.withdraw_money(accountId, amount)
+
+        return result
+    }
 }

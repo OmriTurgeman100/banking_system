@@ -30,4 +30,28 @@ export class TransactionRepo implements ITransactionRepository {
     }
   }
 
+  async withdraw_money(accountId: number, balance: number): Promise<string> {
+
+    const client = await pool.connect();
+
+    try {
+      await client.query("BEGIN");
+
+      await pool.query("select 1;")
+
+
+      await client.query("COMMIT;");
+
+      return `transaction succeed, deposited $${balance}`;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      return "failed";
+    } finally {
+      client.release();
+    }
+  }
+
+
+
 }
+

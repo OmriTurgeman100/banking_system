@@ -29,4 +29,27 @@ export const deposit_money_to_account = CatchAsync(
     },
 );
 
+export const withdraw_money_to_account = CatchAsync(
+
+    async (req: Request, res: Response): Promise<void> => {
+        const account_id = Number(req.params.account_id)
+        const amount = req.body.amount;
+
+
+        if (isNaN(account_id)) {
+            res.status(400).json({ message: "Invalid account_id" });
+            return;
+        }
+
+        if (!amount || typeof amount !== 'number' || amount <= 0) {
+            res.status(400).json({ message: "Amount must be a positive number" });
+            return;
+        }
+
+        res.status(200).json({ data: await transactionService.withdraw(account_id, amount) });
+
+    },
+);
+
+
 
