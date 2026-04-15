@@ -16,7 +16,7 @@ export const createAccount = CatchAsync(
             return;
         }
 
-        res.status(200).json({ data: await accountService.createNewAccount(personId) });
+        res.status(201).json({ data: await accountService.createNewAccount(personId) });
 
     },
 );
