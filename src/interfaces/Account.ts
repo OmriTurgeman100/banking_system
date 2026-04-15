@@ -10,7 +10,7 @@ export interface IAccount {
     personId: number;
     balance: number;
     dailyWithdrawalLimit: number;
-    blockedFlag: boolean;
+    blockedflag: boolean;
     accountType: string
     createDate: string;
 }
@@ -22,6 +22,8 @@ export interface IAccountRepository {
 
     findAccountById(account_id: number): Promise<IAccount | null>
 
-    findAccountBalance(account_id: number): Promise<number>
+    findAccountBalance(account_id: number): Promise<string>
+
+    block_specified_account(account_id: number, block: boolean): Promise<IAccount>
 
 }

@@ -19,6 +19,10 @@ export class TransactionService {
             throw new AppError("Account not found", 400)
         }
 
+        if (account.blockedflag) {
+            throw new AppError("You are blocked", 401)
+        }
+
         const result = await this.repo.deposit_money(accountId, amount)
 
         return result
