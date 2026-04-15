@@ -13,7 +13,6 @@ export class AccountService {
         const specified_person = await this.repo.findPersonById(person_id)
 
 
-
         if (!specified_person) {
             throw new AppError("Person not found", 400)
         }

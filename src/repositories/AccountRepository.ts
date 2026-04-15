@@ -23,5 +23,22 @@ export class AccountRepo implements IAccountRepository {
         return result.rows[0];
     }
 
+    async findAccountById(account_id: number): Promise<IAccount | null> {
+        const result = await pool.query("select * from accounts where accountId = $1;", [account_id])
+
+        if (result.rows.length === 0) {
+            return null;
+        }
+
+        return result.rows[0];
+    }
+
+    async findAccountBalance(account_id: number): Promise<number> {
+
+        const result = await pool.query("select balance from accounts where account_id = $1;", [account_id])
+
+        return result.rows[0]
+
+    }
 
 }

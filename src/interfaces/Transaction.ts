@@ -1,6 +1,5 @@
 export interface ITransactionRepository {
 
-    deposite_money(accountId: number, balance: number): string
-    
-    
+    deposit_money(accountId: number, balance: number): Promise<string>
+
 }

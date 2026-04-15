@@ -20,4 +20,8 @@ export interface IAccountRepository {
 
     findPersonById(person_id: number): Promise<IPerson | null>
 
+    findAccountById(account_id: number): Promise<IAccount | null>
+
+    findAccountBalance(account_id: number): Promise<number>
+
 }

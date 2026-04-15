@@ -5,6 +5,7 @@ import { Request, Response, NextFunction } from "express";
 import AppError from "./utils/AppError";
 import { GlobalError } from "./utils/GlobalError";
 import accountRouter from "./routers/AccountRouter"
+import transactionRouter from "./routers/TransactionRouter"
 import pool from "./database/database"
 
 const app = express();
@@ -33,6 +34,7 @@ app.use("/health", async (req: Request, res: Response, next: NextFunction) => {
 })
 
 app.use("/api/v1/accounts", accountRouter);
+app.use("/api/v1/transactions", transactionRouter);
 
 
 app.use("*", (req: Request, res: Response, next: NextFunction): void => {
