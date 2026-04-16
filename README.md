@@ -2,7 +2,7 @@
 
 Feel free to reach out if you have any questions or feedback — I'm always happy to hear.
 
-You can also check out my [GitHub](https://github.com/OmriTurgeman100) to see other projects I've built at a much larger scale than this one.
+You can also check out my [GitHub](https://github.com/OmriTurgeman100) to see other projects I've built at a much larger scale than this one (production projects)
 
 # How to run
 
