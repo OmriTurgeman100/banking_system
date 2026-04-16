@@ -19,9 +19,7 @@ the docker compose starts the backend.
 
 # Postman Collection
 
-You can test all the routes using the Postman collection below:
-
-[Open Postman Collection](https://.postman.co/workspace/My-Workspace~08edc795-4589-433b-83dd-0d9b43cb6777/request/33435376-313b0109-abcd-4679-9933-40ee52758e03?action=share&creator=33435376&active-environment=33435376-8d276d7c-77cc-40d7-9d25-bd4302e4ea63)
+You can test all the routes using the Postman collection file I exported
 
 # Routes
 
