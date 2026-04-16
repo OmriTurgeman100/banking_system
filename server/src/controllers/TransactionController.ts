@@ -68,7 +68,7 @@ export const chckUserTransactions = CatchAsync(
                 transactions.type, transactions.value
                 from transactions
                 inner join accounts on accounts.accountid  = transactions.accountid
-                inner join persons on persons.personid = accounts.accountid
+                inner join persons on persons.personid = accounts.personid
                 where accounts.accountid = $1
             ) select * from account_transactions
             where transactiondate >= $2
@@ -84,7 +84,7 @@ export const chckUserTransactions = CatchAsync(
                 transactions.type, transactions.value
                 from transactions
                 inner join accounts on accounts.accountid  = transactions.accountid
-                inner join persons on persons.personid = accounts.accountid
+                inner join persons on persons.personid = accounts.personid
                 where accounts.accountid = $1
             ) select * from account_transactions;
         `, [accountId])
