@@ -40,8 +40,18 @@ export class TransactionService {
             throw new AppError("You are blocked", 401)
         }
 
-        // * Service is in development, not ready yet. need to perform more checks.
+        if (amount > account.dailywithdrawallimit) {
+            throw new AppError("Amount is more than the daily withdraw", 400)
+        }
 
+        if (amount > account.balance) {
+            throw new AppError("amount is higher than account balance", 400)
+        }
+
+        if (await this.repo.hasExceededWithdrawLimit(accountId, amount, account.dailywithdrawallimit)) {
+            throw new AppError("account has passed his daily withdrawal balance", 400)
+
+        }
 
         const result = await this.repo.withdrawMoney(accountId, amount)
 

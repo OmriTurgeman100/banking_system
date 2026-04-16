@@ -58,5 +58,38 @@ export class TransactionRepo implements ITransactionRepository {
     }
   }
 
+
+  async hasExceededWithdrawLimit(
+    accountId: number,
+    amount: number,
+    limit: number
+  ): Promise<boolean> {
+    // * function which checks if user has passed his daily amount, some users can have no transactions and return null in value column.
+    // * I used coalesce in order to safely return 0 instead of null.
+    // * if user has passed his daily limit code returns true, else false.
+    // * the code checks the sum of the withdraw transactions during the day along with the amount user was looking to pull out, if all of that is > daily limit it returns true.
+    // * true means user has passed his daily limit.
+    const result = await pool.query<{ data: boolean }>(
+      `
+        WITH money_spent AS (
+          SELECT COALESCE(SUM(value), 0) AS amount
+          FROM transactions
+          WHERE transactionDate = CURRENT_DATE
+            AND accountId = $1
+            AND type = 'withdraw'
+        )
+        SELECT
+          CASE
+            WHEN amount + $2 > $3 THEN true
+            ELSE false
+          END AS data
+        FROM money_spent;
+    `,
+      [accountId, amount, limit]
+    );
+
+    return result.rows[0].data;
+  }
 }
+
 

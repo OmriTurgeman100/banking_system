@@ -9,7 +9,7 @@ export interface IAccount {
     accountId: number;
     personId: number;
     balance: number;
-    dailyWithdrawalLimit: number;
+    dailywithdrawallimit: number;
     blockedflag: boolean;
     accountType: string
     createDate: string;

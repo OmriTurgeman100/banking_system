@@ -7,4 +7,6 @@ export interface ITransactionRepository {
 
     withdrawMoney(accountId: number, balance: number): Promise<IAccount>
 
+    hasExceededWithdrawLimit(accountId: number, amount: number, limit: number): Promise<boolean>
+
 }
