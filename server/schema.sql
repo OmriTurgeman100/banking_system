@@ -5,7 +5,7 @@
 * The comments are written by me.
 */
 
-create database banking_system;
+-- create database banking_system;
 
 create table persons (
     personId BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
